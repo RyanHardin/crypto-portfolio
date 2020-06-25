@@ -1,20 +1,17 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Header from "./components/Header";
-import CoinsOverview from "./screens/CoinsOverview";
+import CoinStack from "./navigation/CoinTrackerNavigator";
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Header title={"CryptoTracker"} />
-      <CoinsOverview />
+      <CoinStack />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60,
     flex: 1,
   },
 });
