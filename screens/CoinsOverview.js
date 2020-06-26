@@ -1,36 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { View, FlatList, TextInput, StyleSheet, StatusBar } from "react-native";
-import { fetchCurrencyList } from "../api/index";
-import { find } from "../utils/index";
+import { View, FlatList, StyleSheet } from "react-native";
+import { Item, Input, Icon } from "native-base";
 
 import Coin from "../components/Coin";
+
+import { fetchCurrencyList } from "../api/index";
+import { find } from "../utils/index";
 
 const CoinsOverview = () => {
   const [currency, setCurrency] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    fetchCurrencyList().then((response) => setCurrency(response.data));
+    fetchCurrencyList().then((response) => setCurrency(response));
   }, []);
 
   return (
-    <View>
-      <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
-      <TextInput
-        style={{ height: 40, borderBottomWidth: 1, paddingLeft: 10 }}
-        placeholder={"Search..."}
-        onChangeText={(text) => setInput(text)}
-        value={input}
-      />
-      <FlatList
-        data={find(currency, input)}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => <Coin coin={item} />}
-      />
+    <View style={styles.container}>
+      <Item rounded style={styles.input}>
+        <Input placeholder="Search..." onChangeText={(text) => setInput(text)} value={input} />
+        <Icon name="ios-search" style={styles.icon} />
+      </Item>
+      {
+        <FlatList
+          data={find(currency, input)}
+          keyExtractor={(item) => item.exchange_id}
+          renderItem={({ item }) => <Coin coin={item} />}
+        />
+      }
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: { alignItems: "center" },
+  input: { width: 350, borderColor: "black", margin: 10, paddingLeft: 10 },
+  icon: { paddingRight: 20 },
+});
 
 export default CoinsOverview;
