@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import CoinStack from "./navigation/CoinTrackerNavigator";
+import CoinStack from "./navigation/CoinNavigator";
 
 const App = () => {
   return (

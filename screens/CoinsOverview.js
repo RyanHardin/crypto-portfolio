@@ -22,11 +22,13 @@ const CoinsOverview = () => {
         onChangeText={(text) => setInput(text)}
         value={input}
       />
-      <FlatList
-        data={find(currency, input)}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => <Coin coin={item} />}
-      />
+      <View style={{ display: "flex", alignItems: "center" }}>
+        <FlatList
+          data={find(currency, input)}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => <Coin coin={item} />}
+        />
+      </View>
     </View>
   );
 };

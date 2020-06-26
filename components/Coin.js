@@ -1,10 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Card, CardItem } from "native-base";
 
 const Coin = ({ coin }) => {
   return (
-    <TouchableOpacity style={{ margin: 10 }}>
-      <Text>{coin.name}</Text>
+    <TouchableOpacity>
+      <Card style={{ width: 350 }}>
+        <CardItem>
+          <Text>{coin.name}</Text>
+        </CardItem>
+      </Card>
     </TouchableOpacity>
   );
 };
