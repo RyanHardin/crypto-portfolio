@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Card, CardItem } from "native-base";
 
 const Coin = ({ coin }) => {
