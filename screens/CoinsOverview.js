@@ -21,11 +21,13 @@ const CoinsOverview = () => {
         <Input placeholder="Search..." onChangeText={(text) => setInput(text)} value={input} />
         <Icon name="ios-search" style={styles.icon} />
       </Item>
-      <FlatList
-        data={find(currency, input)}
-        keyExtractor={(item) => item.exchange_id}
-        renderItem={({ item }) => <Coin coin={item} />}
-      />
+      {
+        <FlatList
+          data={find(currency, input)}
+          keyExtractor={(item) => item.exchange_id}
+          renderItem={({ item }) => <Coin coin={item} />}
+        />
+      }
     </View>
   );
 };

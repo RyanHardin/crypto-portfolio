@@ -7,7 +7,12 @@ const Coin = ({ coin }) => {
     <TouchableOpacity>
       <Card style={{ width: 350 }}>
         <CardItem>
-          <Text>{coin.name}</Text>
+          <Image
+            style={{ width: 30, height: 30 }}
+            source={{ uri: coin.url }}
+            resizeMode={"cover"} // cover or contain its upto you view look
+          />
+          <Text style={{ margin: 10 }}>{coin.name}</Text>
         </CardItem>
       </Card>
     </TouchableOpacity>
