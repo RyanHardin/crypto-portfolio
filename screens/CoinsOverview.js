@@ -7,27 +7,24 @@ import Coin from "../components/Coin";
 import { fetchCurrencyList } from "../api/index";
 import { find } from "../utils/index";
 
-const CoinsOverview = () => {
+const CoinsOverview = ({ navigation }) => {
   const [currency, setCurrency] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
     fetchCurrencyList().then((response) => setCurrency(response));
   }, []);
-
   return (
     <View style={styles.container}>
       <Item rounded style={styles.input}>
         <Input placeholder="Search..." onChangeText={(text) => setInput(text)} value={input} />
         <Icon name="ios-search" style={styles.icon} />
       </Item>
-      {
-        <FlatList
-          data={find(currency, input)}
-          keyExtractor={(item) => item.exchange_id}
-          renderItem={({ item }) => <Coin coin={item} />}
-        />
-      }
+      <FlatList
+        data={find(currency, input)}
+        keyExtractor={(item) => item.exchange_id}
+        renderItem={({ item }) => <Coin coin={item} navigation={navigation} />}
+      />
     </View>
   );
 };
