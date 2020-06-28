@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from "react-native";
 
 const CoinDetails = ({ route }) => {
   const { coin } = route.params;
-  console.log(coin);
   return (
     <View style={styles.container}>
       <Text>{coin.name}</Text>

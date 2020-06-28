@@ -13,6 +13,7 @@ const Coin = ({ coin, navigation }) => {
             resizeMode={"cover"} // cover or contain its upto you view look
           />
           <Text style={styles.name}>{coin.name}</Text>
+          <Text>{coin.asset_id}</Text>
         </CardItem>
       </Card>
     </TouchableOpacity>

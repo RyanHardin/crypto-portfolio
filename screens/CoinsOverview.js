@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import { Item, Input, Icon } from "native-base";
+import { Item, Input, Icon, Text } from "native-base";
 
 import Coin from "../components/Coin";
 
@@ -14,17 +14,22 @@ const CoinsOverview = ({ navigation }) => {
   useEffect(() => {
     fetchCurrencyList().then((response) => setCurrency(response));
   }, []);
+
   return (
     <View style={styles.container}>
       <Item rounded style={styles.input}>
         <Input placeholder="Search..." onChangeText={(text) => setInput(text)} value={input} />
         <Icon name="ios-search" style={styles.icon} />
       </Item>
-      <FlatList
-        data={find(currency, input)}
-        keyExtractor={(item) => item.exchange_id}
-        renderItem={({ item }) => <Coin coin={item} navigation={navigation} />}
-      />
+      {currency.length ? (
+        <FlatList
+          data={find(currency, input)}
+          keyExtractor={(item) => item.asset_id}
+          renderItem={({ item }) => <Coin coin={item} navigation={navigation} />}
+        />
+      ) : (
+        <Text>Loading...</Text>
+      )}
     </View>
   );
 };
