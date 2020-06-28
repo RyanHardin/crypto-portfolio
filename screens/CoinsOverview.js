@@ -12,7 +12,7 @@ const CoinsOverview = ({ navigation }) => {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    fetchCurrencyList().then((response) => setCurrency(response));
+    fetchCurrencyList().then((res) => setCurrency(res));
   }, []);
 
   return (
