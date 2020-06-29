@@ -5,9 +5,5 @@
  * @param {String} input
  */
 export const find = (arr, input) => {
-  return arr.filter(
-    (item) =>
-      item.name.toLowerCase().includes(input.toLowerCase()) ||
-      item.asset_id.toLowerCase().includes(input.toLowerCase()),
-  );
+  return arr.filter((item) => item.FullName.toLowerCase().includes(input.toLowerCase()));
 };

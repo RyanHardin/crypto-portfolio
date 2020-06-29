@@ -17,3 +17,13 @@ export const fetchCurrencyList = async () => {
     .then((list) => list.filter((obj) => obj.name != undefined && obj.url != undefined))
     .catch((error) => console.log(error));
 };
+
+export const fetchCoins = async () => {
+  let coins = [];
+  await axios.get("https://min-api.cryptocompare.com/data/all/coinlist?summary=true").then((response) => {
+    Object.keys(response.data.Data).forEach(function (key) {
+      coins.push(response.data.Data[key]);
+    });
+  });
+  return coins;
+};

@@ -5,7 +5,7 @@ const CoinDetails = ({ route }) => {
   const { coin } = route.params;
   return (
     <View style={styles.container}>
-      <Text>{coin.name}</Text>
+      <Text>{coin.FullName}</Text>
     </View>
   );
 };

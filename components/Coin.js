@@ -3,17 +3,20 @@ import { Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Card, CardItem } from "native-base";
 
 const Coin = ({ coin, navigation }) => {
+  const image = `https://www.cryptocompare.com/${coin.ImageUrl}`;
   return (
     <TouchableOpacity onPress={() => navigation.navigate("Details", { coin: coin })}>
       <Card style={{ width: 350 }}>
         <CardItem>
-          <Image
-            style={styles.image}
-            source={{ uri: coin.url }}
-            resizeMode={"cover"} // cover or contain its upto you view look
-          />
-          <Text style={styles.name}>{coin.name}</Text>
-          <Text>{coin.asset_id}</Text>
+          {
+            <Image
+              style={styles.image}
+              source={{ uri: image }}
+              resizeMode={"cover"} // cover or contain its upto you view look
+            />
+          }
+          <Text style={styles.name}>{coin.FullName}</Text>
+          <Text>{coin.Symbol}</Text>
         </CardItem>
       </Card>
     </TouchableOpacity>

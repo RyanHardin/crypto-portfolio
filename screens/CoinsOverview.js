@@ -4,7 +4,7 @@ import { Item, Input, Icon, Text } from "native-base";
 
 import Coin from "../components/Coin";
 
-import { fetchCurrencyList } from "../api/index";
+import { fetchCurrencyList, fetchCoins } from "../api/index";
 import { find } from "../utils/index";
 
 const CoinsOverview = ({ navigation }) => {
@@ -12,9 +12,8 @@ const CoinsOverview = ({ navigation }) => {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    fetchCurrencyList().then((res) => setCurrency(res));
+    fetchCoins().then((res) => setCurrency(res));
   }, []);
-
   return (
     <View style={styles.container}>
       <Item rounded style={styles.input}>
@@ -23,8 +22,9 @@ const CoinsOverview = ({ navigation }) => {
       </Item>
       {currency.length ? (
         <FlatList
+          contentContainerStyle={{ paddingBottom: 100 }}
           data={find(currency, input)}
-          keyExtractor={(item) => item.asset_id}
+          keyExtractor={(item) => item.Id}
           renderItem={({ item }) => <Coin coin={item} navigation={navigation} />}
         />
       ) : (
