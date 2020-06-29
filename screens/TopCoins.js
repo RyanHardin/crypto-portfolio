@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import { Item, Input, Icon, Text } from "native-base";
+import { Text } from "native-base";
 
 import Coin from "../components/Coin";
 
@@ -8,7 +8,6 @@ import { getTopCoins } from "../api/index";
 
 const TopCoins = ({ navigation }) => {
   const [currency, setCurrency] = useState([]);
-  const [input, setInput] = useState("");
 
   useEffect(() => {
     getTopCoins().then((res) => setCurrency(res));
@@ -17,7 +16,6 @@ const TopCoins = ({ navigation }) => {
     <View style={styles.container}>
       {currency.length ? (
         <FlatList
-          contentContainerStyle={{ paddingBottom: 100 }}
           data={currency}
           keyExtractor={(item) => item.Id}
           renderItem={({ item }) => <Coin coin={item} navigation={navigation} />}

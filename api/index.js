@@ -19,7 +19,7 @@ export const getTopCoins = async () => {
   });
 
   return coins
-    .filter((item) => Number(item["SortOrder"]) < 11)
+    .filter((item) => Number(item["SortOrder"]) < 16)
     .sort(function (a, b) {
       var x = a["SortOrder"];
       var y = b["SortOrder"];
