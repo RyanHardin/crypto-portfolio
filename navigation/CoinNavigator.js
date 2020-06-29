@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import CoinsOverview from "../screens/CoinsOverview";
 import CoinDetails from "../screens/CoinDetails";
+import TopCoins from "../screens/TopCoins";
 
 const Stack = createStackNavigator();
 const config = {
@@ -21,7 +22,7 @@ function CoinStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Overview" component={CoinsOverview} options={config} />
+        <Stack.Screen name="Top" component={TopCoins} options={config} />
         <Stack.Screen name="Details" component={CoinDetails} options={config} />
       </Stack.Navigator>
     </NavigationContainer>
