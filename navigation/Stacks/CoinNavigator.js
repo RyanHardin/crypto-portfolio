@@ -2,8 +2,8 @@ import "react-native-gesture-handler";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import CoinsOverview from "../screens/CoinsOverview";
-import CoinDetails from "../screens/CoinDetails";
+import CoinDetails from "../../screens/CoinDetails";
+import TopCoins from "../../screens/TopCoins";
 
 const Stack = createStackNavigator();
 const config = {
@@ -16,12 +16,12 @@ const config = {
   },
 };
 
-function SearchNavigator() {
+function CoinStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Overview" component={CoinsOverview} options={config} />
+      <Stack.Screen name="Top Coins" component={TopCoins} options={config} />
       <Stack.Screen name="Details" component={CoinDetails} options={config} />
     </Stack.Navigator>
   );
 }
-export default SearchNavigator;
+export default CoinStack;

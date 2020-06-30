@@ -3,8 +3,9 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import SearchStack from "../navigation/SearchNavigator";
-import CoinStack from "../navigation/CoinNavigator";
+import SearchStack from "./Stacks/SearchNavigator";
+import CoinStack from "./Stacks/CoinNavigator";
+import NewsStack from "./Stacks/NewsNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,6 +25,7 @@ function TabNavigator() {
       <Tab.Navigator>
         <Tab.Screen name="Home" component={CoinStack} />
         <Tab.Screen name="Search" component={SearchStack} />
+        <Tab.Screen name="News" component={NewsStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
