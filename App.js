@@ -1,12 +1,11 @@
 import React from "react";
 import { StyleSheet, View, StatusBar } from "react-native";
-import CoinStack from "./navigation/CoinNavigator";
-
+import TabBarNavigator from "./navigation/TabBarNavigator";
 const App = () => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
-      <CoinStack />
+      <TabBarNavigator />
     </View>
   );
 };

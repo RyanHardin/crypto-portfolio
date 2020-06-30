@@ -1,29 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import { Item, Input, Icon, Text } from "native-base";
+import { Text } from "native-base";
 
 import Coin from "../components/Coin";
 
-import { fetchCurrencyList, fetchCoins } from "../api/index";
-import { find } from "../utils/index";
+import { getTopCoins } from "../api/index";
 
-const CoinsOverview = ({ navigation }) => {
+const TopCoins = ({ navigation }) => {
   const [currency, setCurrency] = useState([]);
-  const [input, setInput] = useState("");
 
   useEffect(() => {
-    fetchCoins().then((res) => setCurrency(res));
+    getTopCoins().then((res) => setCurrency(res));
   }, []);
   return (
     <View style={styles.container}>
-      <Item rounded style={styles.input}>
-        <Input placeholder="Search..." onChangeText={(text) => setInput(text)} value={input} />
-        <Icon name="ios-search" style={styles.icon} />
-      </Item>
       {currency.length ? (
         <FlatList
-          contentContainerStyle={{ paddingBottom: 100 }}
-          data={find(currency, input)}
+          data={currency}
           keyExtractor={(item) => item.Id}
           renderItem={({ item }) => <Coin coin={item} navigation={navigation} />}
         />
@@ -40,4 +33,4 @@ const styles = StyleSheet.create({
   icon: { paddingRight: 20 },
 });
 
-export default CoinsOverview;
+export default TopCoins;
